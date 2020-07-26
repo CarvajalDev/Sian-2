@@ -10,6 +10,7 @@ router.get("/signup", isNotLoggedIn, (req, res) => {
 
 router.post(
   "/signup",
+  isNotLoggedIn,
   passport.authenticate("local.signup", {
     successRedirect: "/profile",
     failureRedirect: "/signup",
@@ -33,9 +34,9 @@ router.get("/profile", isLoggedIn, (req, res) => {
   res.render("profile");
 });
 
-router.get("/logout", isNotLoggedIn, (req, res) => {
+router.get("/logout", isLoggedIn, (req, res) => {
   req.logOut();
-  res.redirect("/");
+  res.redirect("/signin");
 });
 
 module.exports = router;

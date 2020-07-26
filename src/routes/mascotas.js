@@ -14,6 +14,7 @@ router.post("/add", isLoggedIn, async (req, res) => {
     nombre_mascota,
     direccion_mascota,
     descripcion,
+    user_id: req.user.id,
   };
 
   await dbPool.query("INSERT INTO mascotas set ?", [newMascota]);
@@ -22,13 +23,16 @@ router.post("/add", isLoggedIn, async (req, res) => {
 });
 
 router.get("/", isLoggedIn, async (req, res) => {
-  const mascotas = await dbPool.query("SELECT * FROM mascotas");
+  const mascotas = await dbPool.query(
+    "SELECT * FROM mascotas WHERE user_id = ?",
+    [req.user.id]
+  );
   res.render("mascotas/list", { mascotas });
 });
 
 router.get("/delete/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
-  await dbPool.query("DELETE FROM mascotas WHERE ID = ?", [id]);
+  await dbPool.query("DELETE FROM mascotas WHERE id = ?", [id]);
   req.flash("success", "Mascota eliminada correctamente");
   res.redirect("/mascotas");
 });
@@ -38,7 +42,6 @@ router.get("/edit/:id", isLoggedIn, async (req, res) => {
   const mascotas = await dbPool.query("SELECT * FROM mascotas WHERE id = ?", [
     id,
   ]);
-  console.log(mascotas[0]);
   res.render("mascotas/edit", { mascota: mascotas[0] });
 });
 

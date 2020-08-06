@@ -8,13 +8,45 @@
                 <div class="card-body">
                     <form action="/signup" method="POST">
                         <div class="form-group">
-                            <input type="text" name="fullname" placeholder="Nombre" class="form-control" autofocus>
+                            <input type="text" name="nombre" placeholder="Nombres" class="form-control" autofocus>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="username" placeholder="Usuario" class="form-control">
+                            <input type="text" name="apellido" placeholder="Apellidos" class="form-control" autofocus>
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" placeholder="contraseña" class="form-control">
+                            <input type="text" name="email" placeholder="Correo Electronico" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Contraseña" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <select name="tipo_documento" class="form-control">
+                                <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
+                                <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                <option value="Pasaporte">Pasaporte</option>
+                                <option value="Registro Civil">registro Civil</option>
+                            </select>
+                            <input type="text" name="documento" placeholder="Numero de Documento" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <select name="municipio" class="form-control">
+                                <option value="Cedula de Ciudadania">Neiva</option>
+                                <option value="Cedula de Extranjeria">Rivera</option>
+                                <option value="Tarjeta de identidad">Palermo</option>
+                                <option value="Pasaporte">Aipe</option>
+                                <option value="Registro Civil">Baraya</option>
+                                <option value="Registro Civil">Tello</option>
+                                <option value="Registro Civil">Villavieja</option>
+                                <option value="Registro Civil">Campoalegre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="direccion" placeholder="Dirección de Residencia"
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="barrio" placeholder="Barrio" class="form-control">
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success btn-block">

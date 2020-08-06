@@ -8,16 +8,15 @@ passport.use(
   "local.signin",
   new LocalStrategy(
     {
-      usernameField: "username",
+      usernameField: "email",
       passwordField: "password",
       passReqToCallback: true,
     },
-    async (req, username, password, done) => {
+    async (req, email, password, done) => {
       console.log(req.body);
-      const rows = await dbPool.query(
-        "SELECT * FROM users WHERE username = ?",
-        [username]
-      );
+      const rows = await dbPool.query("SELECT * FROM users WHERE email = ?", [
+        email,
+      ]);
       if (rows.length > 0) {
         const user = rows[0];
         const validPassword = await helpers.matchPassword(
@@ -25,7 +24,7 @@ passport.use(
           user.password
         );
         if (validPassword) {
-          done(null, user, req.flash("success", "Bienvenido " + user.username));
+          done(null, user, req.flash("success", "Bienvenido " + user.email));
         } else {
           done(null, false, req.flash("message", "Contraseña Incorrecta"));
         }
@@ -40,16 +39,30 @@ passport.use(
   "local.signup",
   new LocalStrategy(
     {
-      usernameField: "username",
+      usernameField: "email",
       passwordField: "password",
       passReqToCallback: true,
     },
-    async (req, username, password, done) => {
-      const { fullname } = req.body;
+    async (req, email, password, done) => {
+      const {
+        nombre,
+        apellido,
+        tipo_documento,
+        documento,
+        direccion,
+        municipio,
+        barrio,
+      } = req.body;
       const newUser = {
-        username,
+        email,
         password,
-        fullname,
+        nombre,
+        apellido,
+        documento,
+        tipo_documento,
+        direccion,
+        municipio,
+        barrio,
       };
       newUser.password = await helpers.encryptPassword(password);
 

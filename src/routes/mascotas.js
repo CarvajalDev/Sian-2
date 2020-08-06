@@ -9,10 +9,26 @@ router.get("/add", isLoggedIn, (req, res) => {
 });
 
 router.post("/add", isLoggedIn, async (req, res) => {
-  const { nombre_mascota, direccion_mascota, descripcion } = req.body;
+  const {
+    nombre_mascota,
+    direccion_mascota,
+    especie_mascota,
+    raza_mascota,
+    nacimiento_mascota,
+    tamaño_mascota,
+    microchip_mascota,
+    historia_clinica_mascota,
+    descripcion,
+  } = req.body;
   const newMascota = {
     nombre_mascota,
     direccion_mascota,
+    especie_mascota,
+    raza_mascota,
+    nacimiento_mascota,
+    tamaño_mascota,
+    microchip_mascota,
+    historia_clinica_mascota,
     descripcion,
     user_id: req.user.id,
   };

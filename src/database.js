@@ -3,9 +3,9 @@ const { promisify } = require("util");
 
 const { database } = require("./keys");
 
-const pool = mysql.createPool(database);
+const dbpool = mysql.createPool(database);
 
-pool.getConnection((err, connection) => {
+dbpool.getConnection((err, connection) => {
   if (err) {
     if (err.code === "PROTOCOL_CONNECTION_LOST") {
       console.error("CONEXION DE LA BASE DE DATOS CERRADA");
@@ -24,6 +24,6 @@ pool.getConnection((err, connection) => {
 });
 
 //Convirtiendo callbacks a promesas
-pool.query = promisify(pool.query);
+dbpool.query = promisify(dbpool.query);
 
-module.exports = pool;
+module.exports = dbpool;

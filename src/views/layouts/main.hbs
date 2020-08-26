@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/15f0574ac3.js" crossorigin="anonymous"></script>
     {{!--estilos propios--}}
     <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
@@ -33,7 +34,51 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-
+    <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
+    <script>
+        bootstrapValidate('#myminNombre', 'min:4:Escriba al menos 4 letras');
+        bootstrapValidate('#myminApellido', 'min:4:Escriba al menos 4 letras');
+        bootstrapValidate('#email', 'email:Escriba una dirección de correo valida');
+        bootstrapValidate('#mypassword', 'matches:#passwordConfirm:Tus contraseñas no coinciden');
+        bootstrapValidate('#myint', 'integer:Complete este campo con un número entero');
+        bootstrapValidate('#mytelefono', 'integer:Complete este campo con un número entero');
+        bootstrapValidate('#myalpha', 'alpha:30:Solo puede ingresar caracteres alfabéticos');
+        bootstrapValidate('#mymax', 'max:10:Por favor no ingrese más de 10 caracteres');
+        bootstrapValidate('#myrequired', 'required:Por favor rellene este campo');
+        bootstrapValidate('#myurl', 'url:Por favor introduzca una URL válida');
+        bootstrapValidate('#mynum', 'numeric:Ingrese solo caracteres numéricos');
+        bootstrapValidate('#myalphanum', 'alphanumeric:Introduzca solo caracteres alfanuméricos');
+        bootstrapValidate('#startwith', 'startsWith:+57:Tu número de teléfono debe comenzar con +57');
+        bootstrapValidate('#endwhith', 'endswith:UCV:Su entrada debe terminar con UCV');
+        bootstrapValidate('#contain', 'contains:Tedir Ghazali:Tu texto debe contener Tedir Ghazali');
+        bootstrapValidate('#divisible', 'divisible:15:15 no es divisible por 4');
+        bootstrapValidate('#regex', 'regex:^[a-z]+$:Por favor cumple mi expresión regular');
+        bootstrapValidate('#iso8601', 'ISO8601:30:Su entrada no coincide con el formato deseado AAAA-MM-DD');
+    </script>
+    <script>
+        bootstrapValidate('#solonumeros', 'integer:Solo puede ingresar numeros');
+        bootstrapValidate('#numerochip', 'integer:Complete este campo con numeros');
+    </script>
+    <script>
+        // Disable form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Get the forms we want to add validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 
 </html>

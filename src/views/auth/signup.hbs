@@ -6,47 +6,85 @@
                     <h3>Registrarse</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/signup" method="POST">
+                    <form action="/signup" method="POST" class="needs-validation">
                         <div class="form-group">
-                            <input type="text" name="nombre" placeholder="Nombres" class="form-control" autofocus>
+                            <input type="text" id="myminNombre" name="nombre" placeholder="Nombres" class="form-control"
+                                autofocus required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="apellido" placeholder="Apellidos" class="form-control" autofocus>
+                            <input type="text" id="myminApellido" name="apellido" placeholder="Apellidos"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="email" placeholder="Correo Electronico" class="form-control">
+                            <input type="text" id="email" name="email" placeholder="Correo Electronico"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" placeholder="Contraseña" class="form-control">
+                            <input type="password" id="passwordConfirm" name="password" placeholder="Contraseña"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <select name="tipo_documento" class="form-control">
+                            <input type="password" id="mypassword" placeholder="Repetir Contraseña" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <select name="tipo_documento" class="form-control" required>
                                 <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
                                 <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
-                                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                <option value="Tarjeta de identidad">Tarjeta de Identidad</option>
                                 <option value="Pasaporte">Pasaporte</option>
-                                <option value="Registro Civil">registro Civil</option>
+                                <option value="Registro Civil">Registro Civil</option>
                             </select>
-                            <input type="text" name="documento" placeholder="Numero de Documento" class="form-control">
+                            <input type="text" id="myint" name="documento" placeholder="Numero de Documento"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <select name="municipio" class="form-control">
-                                <option value="Cedula de Ciudadania">Neiva</option>
-                                <option value="Cedula de Extranjeria">Rivera</option>
-                                <option value="Tarjeta de identidad">Palermo</option>
-                                <option value="Pasaporte">Aipe</option>
-                                <option value="Registro Civil">Baraya</option>
-                                <option value="Registro Civil">Tello</option>
-                                <option value="Registro Civil">Villavieja</option>
-                                <option value="Registro Civil">Campoalegre</option>
+                            <input type="text" id="mytelefono" name="telefono" placeholder="Número de Teléfono"
+                                class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="municipio" class="form-control" required>
+                                <option value="Neiva">Neiva</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <input type="text" name="direccion" placeholder="Dirección de Residencia"
-                                class="form-control">
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="barrio" placeholder="Barrio" class="form-control">
+                            <input type="text" name="barrio" placeholder="Barrio" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="comuna" class="form-control" required>
+                                <option value="1">Comuna 1</option>
+                                <option value="2">Comuna 2</option>
+                                <option value="3">Comuna 3</option>
+                                <option value="4">Comuna 4</option>
+                                <option value="5">Comuna 5</option>
+                                <option value="6">Comuna 6</option>
+                                <option value="7">Comuna 7</option>
+                                <option value="8">Comuna 8</option>
+                                <option value="9">Comuna 9</option>
+                                <option value="10">Comuna 10</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="tipo_usuario" class="form-control" required>
+                                <option value="Ciudadano">Ciudadano</option>
+                                <option value="Autoridades Administrativas">Autoridades Administrativas</option>
+                                <option value="Org. Judiciales">Org. Judiciales</option>
+                                <option value="Org. Animalistas">Org. Animalistas</option>
+                                <option value="Org. Comunitarias">Org. Comunitarias</option>
+                                <option value="Academia">Academia</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="remember" required> Acepto
+                                términos y condiciones.
+                                <div class="valid-feedback">Aceptado.</div>
+                                <div class="invalid-feedback">Marca esta casilla para continuar.</div>
+                            </label>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success btn-block">
@@ -54,6 +92,9 @@
                             </button>
                         </div>
                     </form>
+                    <p>¿Ya tienes una cuenta?
+                        <a href="/signin">Inicia Sesión</a>
+                    </p>
                 </div>
             </div>
         </div>

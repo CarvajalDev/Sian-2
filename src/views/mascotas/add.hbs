@@ -3,40 +3,66 @@
         <div class="col-md-4 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    <form action="/mascotas/add" method="POST">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="nombre_mascota" placeholder="Nombre"
-                                autofocus>
+                    <form action="/mascotas/add" method="POST" enctype="multipart/form-data">
+                        <div class="file-field">
+                            <div class="z-depth-1-half mb-4">
+                                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid"
+                                    alt="example placeholder">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="btn btn-mdb-color btn-rounded float-left">
+                                    <span>Foto de Mascota</span>
+                                    <input type="file" name="imagen_mascota">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="especie_mascota" placeholder="Especie"
-                                autofocus>
+                            <input type="text" id="myminNombre" class="form-control" name="nombre_mascota"
+                                placeholder="Nombre" autofocus required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="raza_mascota" placeholder="Raza" autofocus>
+                            <select name="padrinazgo_mascota" class="form-control" required>
+                                <option value="Padrinazgo individual">Padrinazgo Individual</option>
+                                <option value="Padrinazgo comunitario">Padrinazgo Comunitario</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="direccion_mascota" placeholder="direccion">
+                            <select name="especie_mascota" class="form-control" required>
+                                <option value="Canina">Canina</option>
+                                <option value="Felina">Felina</option>
+                                <option value="Ave">Ave</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="raza_mascota" class="form-control" required>
+                                <option value="Raza1">Raza1</option>
+                                <option value="Raza2">Raza2</option>
+                                <option value="Raza3">Raza3</option>
+                                <option value="Raza4">Raza4</option>
+                                <option value="Raza5">Raza5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección"
+                                required>
                         </div>
                         <div class="form-group col-13">
-                            <input class="form-control" type="date" name="nacimiento_mascota" value="">
+                            <input class="form-control" type="date" name="nacimiento_mascota" value="" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="tamaño_mascota"
-                                placeholder="Tamaño de mascota">
+                            <input type="text" id="solonumeros" class="form-control" name="tamaño_mascota"
+                                placeholder="Tamaño de mascota (cm)" required>
                         </div>
                         <div class="form-group ">
-                            <input type="text" class="form-control" name="microchip_mascota"
+                            <input type="text" id="numerochip" class="form-control" name="microchip_mascota"
                                 placeholder="Numero de chip">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">Historia Clinica</label>
+                            <label for="exampleInputFile">Historia Clinica:</label>
                             <input type="file" name="historia_clinica_mascota" class="form-control-file"
-                                id="exampleInputFile" aria-describedby="fileHelp">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="descripcion" rows="2" class="form-control"
-                                placeholder="Describe algo"></textarea>
+                                id="exampleInputFile" aria-describedby="fileHelp"
+                                accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                required>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success btn-block">

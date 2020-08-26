@@ -49,9 +49,12 @@ passport.use(
         apellido,
         tipo_documento,
         documento,
+        telefono,
         direccion,
         municipio,
         barrio,
+        comuna,
+        tipo_usuario,
       } = req.body;
       const newUser = {
         email,
@@ -60,9 +63,12 @@ passport.use(
         apellido,
         documento,
         tipo_documento,
+        telefono,
         direccion,
         municipio,
         barrio,
+        comuna,
+        tipo_usuario,
       };
       newUser.password = await helpers.encryptPassword(password);
 

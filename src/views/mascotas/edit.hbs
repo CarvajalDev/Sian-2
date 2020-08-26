@@ -6,19 +6,60 @@
                     <form action="/mascotas/edit/{{mascota.id}}" method="POST">
                         <div class="form-group">
                             <input type="text" value="{{mascota.nombre_mascota}}" class="form-control"
-                                name="nombre_mascota" placeholder="nombre">
+                                name="nombre_mascota" placeholder="Nombre" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <select name="padrinazgo_mascota" class="form-control">
+                                <option>{{mascota.padrinazgo_mascota}}</option>
+                                <option value="individual">Padrinazgo Individual</option>
+                                <option value="comunitario">Padrinazgo Comunitario</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="especie_mascota" class="form-control">
+                                <option>{{mascota.especie_mascota}}</option>
+                                <option value="Canina">Canina</option>
+                                <option value="Felina">Felina</option>
+                                <option value="Ave">Ave</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="raza_mascota" class="form-control">
+                                <option>{{mascota.raza_mascota}}</option>
+                                <option value="Raza1">Raza1</option>
+                                <option value="Raza2">Raza2</option>
+                                <option value="Raza3">Raza3</option>
+                                <option value="Raza4">Raza4</option>
+                                <option value="Raza5">Raza5</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="text" value="{{mascota.direccion_mascota}}" class="form-control"
-                                name="direccion_mascota" placeholder="direccion">
+                                name="direccion_mascota" placeholder="dirección">
+                        </div>
+                        <div class="form-group col-13">
+                            <input class="form-control" type="date" name="nacimiento_mascota"
+                                value="{{mascota.nacimiento_mascota}}">
                         </div>
                         <div class="form-group">
-                            <textarea name="descripcion" rows="2" class="form-control"
-                                placeholder="Describe algo">{{mascota.descripcion}}</textarea>
+                            <input type="text" value="{{mascota.tamaño_mascota}}" class="form-control"
+                                name="tamaño_mascota" placeholder="Tamaño de mascota (cm)">
                         </div>
+                        <div class="form-group ">
+                            <input type="text" value="{{mascota.microchip_mascota}}" class="form-control"
+                                name="microchip_mascota" placeholder="Numero de chip">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Historia Clinica:</label>
+                            <input type="file" value="{{mascota.historia_clinica_mascota}}"
+                                name="historia_clinica_mascota" class="form-control-file" id="exampleInputFile"
+                                aria-describedby="fileHelp"
+                                accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                        </div>
+
                         <div class="form-group">
                             <button class="btn btn-success btn-block">
-                                Enviar denuncia
+                                Editar Mascota
                             </button>
                         </div>
                     </form>

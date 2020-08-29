@@ -44,3 +44,14 @@ ALTER TABLE mascotas
 (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
 
 DESCRIBE mascotas;
+
+CREATE TABLE imagenes
+(
+    id INT(11) NOT NULL,
+    titulo VARCHAR(150) NOT NULL,
+    descripcion VARCHAR(150) NOT NULL,
+    imageURL VARCHAR(150) NOT NULL,
+    public_id VARCHAR(150) NOT NULL,
+    mascota_id INT(11),
+    CONSTRAINT fk_mascota FOREIGN KEY (mascota_id) References mascotas(id)
+);

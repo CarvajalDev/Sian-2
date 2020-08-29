@@ -1,6 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
+const cloudinary = require("cloudinary");
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 const dbPool = require("../database");
 const { isLoggedIn } = require("../lib/auth");
 
@@ -10,6 +17,7 @@ router.get("/add", isLoggedIn, (req, res) => {
 
 router.post("/add", isLoggedIn, async (req, res) => {
   const {
+    imagen_mascota,
     nombre_mascota,
     padrinazgo_mascota,
     direccion_mascota,
@@ -20,7 +28,12 @@ router.post("/add", isLoggedIn, async (req, res) => {
     microchip_mascota,
     historia_clinica_mascota,
   } = req.body;
+  const result = await cloudinary.v2.uploader.upload(
+    req.files["imagen_mascota"][0].path
+  );
+  const fileUpload = req.files["historia_clinica_mascota"][0].filename;
   const newMascota = {
+    imagen_mascota: result.url,
     nombre_mascota,
     padrinazgo_mascota,
     direccion_mascota,
@@ -29,7 +42,7 @@ router.post("/add", isLoggedIn, async (req, res) => {
     nacimiento_mascota,
     tamaño_mascota,
     microchip_mascota,
-    historia_clinica_mascota,
+    historia_clinica_mascota: fileUpload,
     user_id: req.user.id,
   };
 

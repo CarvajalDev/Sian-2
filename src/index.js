@@ -3,13 +3,13 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 const morgan = require("morgan");
-const exphbs = require("express-handlebars");
+const multer = require("multer");
 const path = require("path");
+const exphbs = require("express-handlebars");
 const flash = require("connect-flash");
 const session = require("express-session");
 const mySqlStore = require("express-mysql-session");
 const passport = require("passport");
-const multer = require("multer");
 
 const { database } = require("./keys");
 const { dirname } = require("path");
@@ -55,7 +55,12 @@ const storage = multer.diskStorage({
     cb(null, new Date().getTime() + path.extname(file.originalname));
   },
 });
-app.use(multer({ storage }).single("image"));
+app.use(
+  multer({ storage }).fields([
+    { name: "imagen_mascota" },
+    { name: "historia_clinica_mascota" },
+  ])
+);
 
 //Variables globales
 app.use((req, res, next) => {

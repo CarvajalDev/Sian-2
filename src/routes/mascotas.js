@@ -15,7 +15,6 @@ const { isLoggedIn } = require("../lib/auth");
 
 router.get("/add", isLoggedIn, async (req, res) => {
   const especies = await dbPool.query("SELECT * FROM especies");
-  console.log(especies);
   res.render("mascotas/add", {
     especies1: especies[0],
     especies2: especies[1],

@@ -3,9 +3,24 @@
         <div class="col-md-4 mx-auto">
             <div class="card text-center">
                 <div class="card-body">
-                    <h3>Hola, {{user.nombre}}</h3>
-                    <h4>{{user.email}}</h4>
-                    <a href="/mascotas/add" class="btn btn-primary m-4">Agrega una mascota</a>
+                    <h1 class="text-left">Hola, {{user.nombre}}</h1>
+                    <h3>Tus Datos</h3>
+                    <p class="text-left">
+                        <span style="color:#0C69D9">Correo: </span>{{user.email}}
+                    </p>
+                    <p class="text-left"><span style="color:#0C69D9">Nombre: </span>{{user.nombre}} {{user.apellido}}
+                    </p>
+                    <p class="text-left"><span style="color:#0C69D9">Ciudad: </span> {{user.municipio}}</p>
+                    <p class="text-left"><span style="color:#0C69D9">Direccion: </span> {{user.direccion}}</p>
+                    <p class="text-left"><span style="color:#0C69D9">Rol: </span> {{user.tipo_usuario}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h4>¿Tienes una mascota nueva por registrar?</h4>
+                    <a href="/mascotas/add" class="btn btn-primary m-4">Registrar Mascota</a>
                 </div>
             </div>
         </div>

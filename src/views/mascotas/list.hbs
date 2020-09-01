@@ -10,9 +10,11 @@
                             {{nombre_mascota}}
                         </h3>
                     </a>
-                    <p class="m-2">{{descripcion}}</p>
                     <img src="{{imagen_mascota}}" class="img-fluid" alt="foto de mascota">
-                    <br>
+                    <p class="m-2">{{padrinazgo_mascota}}</p>
+                    <p class="m-1">Especie: {{especie_mascota}}</p>
+                    <p class="m-1">Raza: | Peligrosa</p>
+                    <p class="m-1">Ubicación: {{direccion_mascota}}</p>
                     <br>
                     <!-- <p>{{timeago created_at}}</p> -->
                     <a href="mascotas/delete/{{id}}" class="btn btn-danger">Eliminar</a>
@@ -28,5 +30,11 @@
             </div>
         </div>
         {{/each}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>Agrega tu nueva mascota</p>
+                <a href="/mascotas/add">¡Agregar!</a>
+            </div>
+        </div>
     </div>
 </div>

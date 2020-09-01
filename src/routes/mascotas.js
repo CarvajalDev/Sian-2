@@ -8,11 +8,20 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+const fs = require("fs-extra");
+
 const dbPool = require("../database");
 const { isLoggedIn } = require("../lib/auth");
 
-router.get("/add", isLoggedIn, (req, res) => {
-  res.render("mascotas/add");
+router.get("/add", isLoggedIn, async (req, res) => {
+  const especies = await dbPool.query("SELECT * FROM especies");
+  console.log(especies);
+  res.render("mascotas/add", {
+    especies1: especies[0],
+    especies2: especies[1],
+    especies3: especies[2],
+    especies4: especies[3],
+  });
 });
 
 router.post("/add", isLoggedIn, async (req, res) => {
@@ -47,6 +56,10 @@ router.post("/add", isLoggedIn, async (req, res) => {
   };
 
   await dbPool.query("INSERT INTO mascotas set ?", [newMascota]);
+
+  await fs.unlink(req.files["imagen_mascota"][0].path);
+  await fs.unlink(req.files["historia_clinica_mascota"][0].path);
+
   req.flash("success", "mascota guardada correctamente");
   res.redirect("/mascotas");
 });

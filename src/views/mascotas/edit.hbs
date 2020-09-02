@@ -4,28 +4,40 @@
             <div class="card">
                 <div class="card-body">
                     <form action="/mascotas/edit/{{mascota.id}}" method="POST">
-                        <div class="form-group">
-                            <input type="text" value="{{mascota.nombre_mascota}}" class="form-control"
-                                name="nombre_mascota" placeholder="Nombre" autofocus>
+                        <div class="file-field">
+                            <div class="z-depth-1-half mb-4">
+                                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid"
+                                    alt="example placeholder">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="btn btn-mdb-color btn-rounded float-left">
+                                    <span>Foto de Mascota</span>
+                                    <input type="file" name="imagen_mascota" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <select name="padrinazgo_mascota" class="form-control">
-                                <option>{{mascota.padrinazgo_mascota}}</option>
-                                <option value="individual">Padrinazgo Individual</option>
-                                <option value="comunitario">Padrinazgo Comunitario</option>
+                            <input type="text" id="myminNombre" class="form-control" name="nombre_mascota"
+                                placeholder="Nombre" value="{{mascota.nombre_mascota}}" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="padrinazgo_mascota" class="form-control" required>
+                                <option value="{{mascota.padrinazgo_mascota}}">{{mascota.padrinazgo_mascota}}</option>
+                                <option value="Padrinazgo individual">Padrinazgo Individual</option>
+                                <option value="Padrinazgo comunitario">Padrinazgo Comunitario</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select name="especie_mascota" class="form-control">
-                                <option>{{mascota.especie_mascota}}</option>
-                                <option value="Canina">Canina</option>
-                                <option value="Felina">Felina</option>
-                                <option value="Ave">Ave</option>
+                            <select name="especie_mascota" class="form-control" required>
+                                <option value="{{mascota.especie_mascota}}">{{mascota.especie_mascota}}</option>
+                                <option value="{{especies1.nombre_especie}}">{{especies1.nombre_especie}}</option>
+                                <option value="{{especies2.nombre_especie}}">{{especies2.nombre_especie}}</option>
+                                <option value="{{especies3.nombre_especie}}">{{especies3.nombre_especie}}</option>
+                                <option value="{{especies4.nombre_especie}}">{{especies4.nombre_especie}}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select name="raza_mascota" class="form-control">
-                                <option>{{mascota.raza_mascota}}</option>
+                            <select name="raza_mascota" class="form-control" required>
                                 <option value="Raza1">Raza1</option>
                                 <option value="Raza2">Raza2</option>
                                 <option value="Raza3">Raza3</option>
@@ -34,29 +46,27 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" value="{{mascota.direccion_mascota}}" class="form-control"
-                                name="direccion_mascota" placeholder="dirección">
+                            <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección"
+                                value="{{mascota.direccion_mascota}}" required>
                         </div>
                         <div class="form-group col-13">
-                            <input class="form-control" type="date" name="nacimiento_mascota"
-                                value="{{mascota.nacimiento_mascota}}">
+                            <input class="form-control" type="date" name="nacimiento_mascota" value="" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" value="{{mascota.tamaño_mascota}}" class="form-control"
-                                name="tamaño_mascota" placeholder="Tamaño de mascota (cm)">
+                            <input type="text" id="solonumeros" class="form-control" name="tamaño_mascota"
+                                placeholder="Tamaño de mascota (cm)" value="{{mascota.tamaño_mascota}}" required>
                         </div>
                         <div class="form-group ">
-                            <input type="text" value="{{mascota.microchip_mascota}}" class="form-control"
-                                name="microchip_mascota" placeholder="Numero de chip">
+                            <input type="text" id="numerochip" class="form-control" name="microchip_mascota"
+                                placeholder="Numero de chip" value="{{mascota.microchip_mascota}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Historia Clinica:</label>
-                            <input type="file" value="{{mascota.historia_clinica_mascota}}"
-                                name="historia_clinica_mascota" class="form-control-file" id="exampleInputFile"
-                                aria-describedby="fileHelp"
-                                accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                            <input type="file" name="historia_clinica_mascota" class="form-control-file"
+                                id="exampleInputFile" aria-describedby="fileHelp"
+                                accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                required>
                         </div>
-
                         <div class="form-group">
                             <button class="btn btn-success btn-block">
                                 Editar Mascota

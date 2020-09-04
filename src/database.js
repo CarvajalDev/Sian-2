@@ -8,7 +8,7 @@ const dbpool = mysql.createPool(database);
 dbpool.getConnection((err, connection) => {
   if (err) {
     if (err.code === "PROTOCOL_CONNECTION_LOST") {
-      console.error("CONEXION DE LA BASE DE DATOS CERRADA");
+      console.error("CONEXION DE LA BASE DE DATOS FUE CERRADA");
     }
     if (err.code === "ER_CON_COUNT_ERROR") {
       console.error("BASE DE DATOS TIENE MUCHAS CONEXIONES");
@@ -23,7 +23,7 @@ dbpool.getConnection((err, connection) => {
   return;
 });
 
-//Convirtiendo callbacks a promesas
+//Convirtiendo callbacks a promesas con Promisify
 dbpool.query = promisify(dbpool.query);
 
 module.exports = dbpool;

@@ -35,7 +35,6 @@ CREATE TABLE mascotas
     crated_at timestamp NOT NULL DEFAULT current_timestamp,
     CONSTRAINT fk_user FOREIGN KEY (user_id) References users(id)
 );
-
 ALTER TABLE mascotas
     ADD PRIMARY KEY (id);
 
@@ -44,6 +43,30 @@ ALTER TABLE mascotas
 (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
 
 DESCRIBE mascotas;
+
+-- Tabla Reportes
+CREATE TABLE reportes
+(
+    id INT(11) NOT NULL,
+    user_id INT(11),
+    evidencia_reportes VARCHAR(150) NOT NULL,
+    ubicacion_reportes VARCHAR(50) NOT NULL,
+    descripcion_reportes VARCHAR(200) NOT NULL,
+    Tipo_denuncia_reportes VARCHAR(30) NOT NULL,
+    estato_reportes VARCHAR(6) NOT NULL,
+    crated_at timestamp NOT NULL DEFAULT current_timestamp,
+    CONSTRAINT fk_reporte FOREIGN KEY (user_id) References users(id),
+);
+
+ALTER TABLE reportes
+    ADD PRIMARY KEY (id);
+
+ALTER TABLE reportes
+    MODIFY id INT
+(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
+
+-- Tabla Imagenes
 
 CREATE TABLE imagenes
 (

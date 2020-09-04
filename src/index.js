@@ -73,6 +73,7 @@ app.use((req, res, next) => {
 app.use(require("./routes"));
 app.use(require("./routes/authentication"));
 app.use("/mascotas", require("./routes/mascotas"));
+app.use("/reportes", require("./routes/reportes"));
 
 //public
 app.use(express.static(path.join(__dirname, "public")));

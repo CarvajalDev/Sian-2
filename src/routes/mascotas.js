@@ -15,11 +15,17 @@ const { isLoggedIn } = require("../lib/auth");
 
 router.get("/add", isLoggedIn, async (req, res) => {
   const especies = await dbPool.query("SELECT * FROM especies");
+  const razas = await dbPool.query("SELECT nombre_raza FROM razas");
+  const nombreRazas = razas.map((elegir) => {
+    return elegir.nombre_raza;
+  });
+  console.log(nombreRazas);
   res.render("mascotas/add", {
     especies1: especies[0],
     especies2: especies[1],
     especies3: especies[2],
     especies4: especies[3],
+    raza: nombreRazas,
   });
 });
 

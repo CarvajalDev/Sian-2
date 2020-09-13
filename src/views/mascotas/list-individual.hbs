@@ -1,0 +1,34 @@
+<div class="container p-4">
+    <div class="row">
+
+        {{#each mascotaIndividual}}
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <a href="{{url}}">
+                        <h3 class="card-title text-uppercase">
+                            {{nombre_mascota}}
+                        </h3>
+                    </a>
+                    <img src="{{imagen_mascota}}" class="img-fluid" alt="foto de mascota">
+                    <p class="m-2">{{padrinazgo_mascota}}</p>
+                    <p class="m-1">Especie: {{especie_mascota}}</p>
+                    <p class="m-1">Raza: | Peligrosa</p>
+                    <p class="m-1">Ubicación: {{direccion_mascota}}</p>
+                    <br>
+                    <!-- <p>{{timeago created_at}}</p> -->
+                    <a href="mascotas/delete/{{id}}" class="btn btn-danger">Eliminar</a>
+                    <a href="mascotas/edit/{{id}}" class="btn btn-info">Editar</a>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>No tienes Mascotas agregadas aún ☹</p>
+                <a href="/mascotas/add">¡Agrega Una!</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

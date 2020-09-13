@@ -115,4 +115,18 @@ router.post("/edit/:id", isLoggedIn, async (req, res) => {
   res.redirect("/mascotas");
 });
 
+router.get("/padrinazgo-individual", isLoggedIn, async (req, res) => {
+  const mascotaIndividual = await dbPool.query(
+    "SELECT * FROM mascotas WHERE padrinazgo_mascota = 'Padrinazgo individual'"
+  );
+  res.render("mascotas/list-individual", { mascotaIndividual });
+});
+
+router.get("/padrinazgo-comunitario", isLoggedIn, async (req, res) => {
+  const mascotaComunitaria = await dbPool.query(
+    "SELECT * FROM mascotas WHERE padrinazgo_mascota = 'Padrinazgo comunitario'"
+  );
+  res.render("mascotas/list-comunitario", { mascotaComunitaria });
+});
+
 module.exports = router;

@@ -19,7 +19,6 @@ router.get("/add", isLoggedIn, async (req, res) => {
   const nombreRazas = razas.map((elegir) => {
     return elegir.nombre_raza;
   });
-  console.log(nombreRazas);
   res.render("mascotas/add", {
     especies1: especies[0],
     especies2: especies[1],
@@ -37,6 +36,7 @@ router.post("/add", isLoggedIn, async (req, res) => {
     direccion_mascota,
     especie_mascota,
     raza_mascota,
+    peligrosa_mascota,
     nacimiento_mascota,
     tamaño_mascota,
     microchip_mascota,
@@ -53,6 +53,7 @@ router.post("/add", isLoggedIn, async (req, res) => {
     direccion_mascota,
     especie_mascota,
     raza_mascota,
+    peligrosa_mascota,
     nacimiento_mascota,
     tamaño_mascota,
     microchip_mascota,
@@ -89,34 +90,51 @@ router.get("/edit/:id", isLoggedIn, async (req, res) => {
   const mascotas = await dbPool.query("SELECT * FROM mascotas WHERE id = ?", [
     id,
   ]);
-  res.render("mascotas/edit", { mascota: mascotas[0] });
+  const razas = await dbPool.query("SELECT nombre_raza FROM razas");
+  const nombreRazas = razas.map((elegir) => {
+    return elegir.nombre_raza;
+  });
+  res.render("mascotas/edit", { mascota: mascotas[0], raza: nombreRazas });
 });
 
 router.post("/edit/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   const {
+    imagen_mascota,
     nombre_mascota,
     padrinazgo_mascota,
     direccion_mascota,
     especie_mascota,
     raza_mascota,
+    peligrosa_mascota,
     nacimiento_mascota,
     tamaño_mascota,
     microchip_mascota,
     historia_clinica_mascota,
   } = req.body;
+
+  const result = await cloudinary.v2.uploader.upload(
+    req.files["imagen_mascota"][0].path
+  );
+  const fileUpload = req.files["historia_clinica_mascota"][0].filename;
   const newMascota = {
+    imagen_mascota: result.url,
     nombre_mascota,
     padrinazgo_mascota,
     direccion_mascota,
     especie_mascota,
     raza_mascota,
+    peligrosa_mascota,
     nacimiento_mascota,
     tamaño_mascota,
     microchip_mascota,
-    historia_clinica_mascota,
+    historia_clinica_mascota: fileUpload,
   };
   await dbPool.query("UPDATE mascotas set ? WHERE id = ?", [newMascota, id]);
+
+  await fs.unlink(req.files["imagen_mascota"][0].path);
+  await fs.unlink(req.files["historia_clinica_mascota"][0].path);
+
   req.flash("success", "Mascota editada correctamente");
   res.redirect("/mascotas");
 });
@@ -133,6 +151,13 @@ router.get("/padrinazgo-comunitario", isLoggedIn, async (req, res) => {
     "SELECT * FROM mascotas WHERE padrinazgo_mascota = 'Padrinazgo comunitario'"
   );
   res.render("mascotas/list-comunitario", { mascotaComunitaria });
+});
+
+router.get("/razas-peligrosas", isLoggedIn, async (req, res) => {
+  const razasPeligrosas = await dbPool.query(
+    "SELECT * FROM mascotas WHERE peligrosa_mascota = 'si' "
+  );
+  res.render("mascotas/list-peligrosas", { razasPeligrosas });
 });
 
 module.exports = router;

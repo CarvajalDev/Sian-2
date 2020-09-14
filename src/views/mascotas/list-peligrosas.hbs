@@ -1,30 +1,28 @@
 <div class="container p-4">
     <div class="row">
 
-        {{#each mascotas}}
+        {{#each razasPeligrosas}}
         <div class="col-md-3">
             <div class="card text-center">
                 <div class="card-body">
                     <a href="{{url}}">
-                        <h3 class="card-title text-uppercase">
+                        <h3 class="card-title text-uppercase" style="color: red;">
                             {{nombre_mascota}}
                         </h3>
                     </a>
                     <img src="{{imagen_mascota}}" class="img-fluid" alt="foto de mascota">
                     <p class="m-2"><span style="color:#0C69D9">{{padrinazgo_mascota}}</span></p>
                     <p class="m-1" align="left"><span style="color:#0C69D9">Especie:</span> {{especie_mascota}}</p>
-                    <p class="m-1" align="left"><span style="color:#0C69D9">Raza:</span> {{raza_mascota}}</p>
+                    <p class="m-1" align="left"><span style="color:red">Raza:</span> {{raza_mascota}}</p>
                     <p class="m-1" align="left"><span style="color:#0C69D9">Ubicación:</span> {{direccion_mascota}}</p>
                     <p class="m-1" align="left"><span style="color:#0C69D9">Tamaño:</span> {{tamaño_mascota}} cm</p>
                     <p class="m-1" align="left"><span style="color:#0C69D9">Microchip:</span> {{microchip_mascota}}</p>
-                    <br>
-                    <!-- <p>{{timeago created_at}}</p> -->
+                    <!-- <p>{{timeago created_at}}</p> 
                     <a href="mascotas/delete/{{id}}" class="btn btn-danger">Eliminar</a>
-                    <a href="mascotas/edit/{{id}}" class="btn btn-info">Editar</a>
+                    <a href="mascotas/edit/{{id}}" class="btn btn-info">Editar</a>-->
                 </div>
             </div>
         </div>
-        <br>
         {{else}}
         <div class="col-md-4 mx-auto">
             <div class="card card-body text-center">
@@ -33,12 +31,5 @@
             </div>
         </div>
         {{/each}}
-        <br>
-        <div class="col-md-4 mx-auto">
-            <div class="card card-body text-center">
-                <p>Agrega tu nueva mascota</p>
-                <a href="/mascotas/add">¡Agregar!</a>
-            </div>
-        </div>
     </div>
 </div>

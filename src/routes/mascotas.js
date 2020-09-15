@@ -141,21 +141,24 @@ router.post("/edit/:id", isLoggedIn, async (req, res) => {
 
 router.get("/padrinazgo-individual", isLoggedIn, async (req, res) => {
   const mascotaIndividual = await dbPool.query(
-    "SELECT * FROM mascotas WHERE padrinazgo_mascota = 'Padrinazgo individual'"
+    "SELECT * FROM mascotas WHERE padrinazgo_mascota = 'Padrinazgo individual' AND user_id = ?",
+    [req.user.id]
   );
   res.render("mascotas/list-individual", { mascotaIndividual });
 });
 
 router.get("/padrinazgo-comunitario", isLoggedIn, async (req, res) => {
   const mascotaComunitaria = await dbPool.query(
-    "SELECT * FROM mascotas WHERE padrinazgo_mascota = 'Padrinazgo comunitario'"
+    "SELECT * FROM mascotas WHERE padrinazgo_mascota = 'Padrinazgo comunitario' AND user_id = ?",
+    [req.user.id]
   );
   res.render("mascotas/list-comunitario", { mascotaComunitaria });
 });
 
 router.get("/razas-peligrosas", isLoggedIn, async (req, res) => {
   const razasPeligrosas = await dbPool.query(
-    "SELECT * FROM mascotas WHERE peligrosa_mascota = 'si' "
+    "SELECT * FROM mascotas WHERE peligrosa_mascota = 'si' AND user_id = ?",
+    [req.user.id]
   );
   res.render("mascotas/list-peligrosas", { razasPeligrosas });
 });

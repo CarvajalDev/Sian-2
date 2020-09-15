@@ -1,8 +1,16 @@
 <div class="container p-4">
     <div class="row">
 
+        <div class="col-md-10 mx-auto">
+            <div class="card card-body text-center">
+                <p>Agrega tu nueva mascota</p>
+                <a href="/mascotas/add">¡Agregar!</a>
+            </div>
+        </div>
+
         {{#each mascotas}}
         <div class="col-md-3">
+            <br>
             <div class="card text-center">
                 <div class="card-body">
                     <a href="{{url}}">
@@ -33,12 +41,5 @@
             </div>
         </div>
         {{/each}}
-        <br>
-        <div class="col-md-4 mx-auto">
-            <div class="card card-body text-center">
-                <p>Agrega tu nueva mascota</p>
-                <a href="/mascotas/add">¡Agregar!</a>
-            </div>
-        </div>
     </div>
 </div>

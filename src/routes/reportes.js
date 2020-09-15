@@ -71,4 +71,6 @@ router.post("/edit/:id", isLoggedIn, async (req, res) => {
   res.redirect("/reportes");
 });
 
+router.get("reportes/reportes", isLoggedIn, async (req, res) => {});
+
 module.exports = router;

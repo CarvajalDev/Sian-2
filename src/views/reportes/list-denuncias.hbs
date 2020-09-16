@@ -1,5 +1,7 @@
 <div class="container p-4">
-    <class class="row">
+    <div class="row">
+
+        <h1>Denuncias</h1>
 
         <div class="col-md-10 mx-auto">
             <div class="card card-body text-center">
@@ -8,7 +10,7 @@
             </div>
         </div>
 
-        {{#each reportados }}
+        {{#each denunciados}}
         <div class="col-md-3">
             <br>
             <div class="card text-center">
@@ -26,7 +28,6 @@
             </div>
         </div>
         {{else}}
-
         <div class="col-md4 mx-auto">
             <div class="card card-body text-center">
                 <p> No haz hecho ningun reporte aún ¿Hay algo que quieras denunciar?</p>
@@ -35,5 +36,5 @@
         </div>
         {{/each}}
 
-</div>
+    </div>
 </div>

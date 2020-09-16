@@ -1,14 +1,16 @@
+const { response } = require("express");
 const express = require("express");
 const router = express.Router();
 
 const pool = require("../database");
 const { isLoggedIn } = require("../lib/auth");
 
-router.get("/add", isLoggedIn, (req, res) => {
-  res.render("reportes/add");
+router.get("/add-reportes", isLoggedIn, (req, res) => {
+  res.render("reportes/add-report");
 });
 
-router.post("/add", isLoggedIn, async (req, res) => {
+// RUTAS DE Reportes
+router.post("/add-reportes", isLoggedIn, async (req, res) => {
   const {
     evidencia_reportes,
     ubicacion_reportes,
@@ -71,6 +73,53 @@ router.post("/edit/:id", isLoggedIn, async (req, res) => {
   res.redirect("/reportes");
 });
 
-router.get("reportes/reportes", isLoggedIn, async (req, res) => {});
+router.get("/list-reportados", isLoggedIn, async (req, res) => {
+  const reportados = await pool.query(
+    "SELECT * FROM reportes WHERE tipo_denuncia_reportes = 'animales perdidos o extraviados' OR tipo_denuncia_reportes = 'solo reporte' AND user_id = ?",
+    [req.user.id]
+  );
+  res.render("reportes/list-reportes", { reportados });
+});
+
+// RUTAS DE DENUNCIAS
+/*router.get("/add-denuncias", isLoggedIn, (req, res) => {
+  res.render("reportes/add-denun");
+});
+router.post("/add-denuncias", isLoggedIn, async (req, res) => {
+  const {
+    evidencia_reportes,
+    ubicacion_reportes,
+    tipo_denuncia_reportes,
+    descripcion_reportes,
+  } = req.body;
+  const newReporte = {
+    evidencia_reportes,
+    ubicacion_reportes,
+    tipo_denuncia_reportes,
+    descripcion_reportes,
+    user_id: req.user.id,
+  };
+  await pool.query("INSERT INTO reportes set ?", [newReporte]);
+  req.flash("success", "Denuncia enviada correctamente");
+  res.redirect("/reportes");
+});
+*/
+router.get("/list-denunciados", isLoggedIn, async (req, res) => {
+  const denunciados = await pool.query(
+    "SELECT * FROM reportes WHERE tipo_denuncia_reportes = 'animales maltratados' AND user_id = ?",
+    [req.user.id]
+  );
+  res.render("reportes/list-denuncias", { denunciados });
+});
+
+// RUTAS DE PQRS
+
+router.get("/list-pqrs", isLoggedIn, async (req, res) => {
+  const pqrs = await pool.query(
+    "SELECT * FROM reportes WHERE tipo_denuncia_reportes = 'pqrs' AND user_id = ?",
+    [req.user.id]
+  );
+  res.render("reportes/list-pqrs", { pqrs });
+});
 
 module.exports = router;

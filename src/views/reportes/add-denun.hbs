@@ -1,0 +1,34 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+
+            <h1>Crear Denuncia</h1>
+
+            <div class="card">
+                <div class="card-body">
+                    <form action="/reportes/add-denuncias" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="tipo_denuncia_reportes"
+                                placeholder="Tipo de denuncia">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="ubicacion_reportes"
+                                placeholder="Lugar de los hechos">
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" name="descripcion_reportes"
+                                placeholder="Descripcion" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="evidencia_reportes"
+                                placeholder="Subir evidencias" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Enviar Reporte</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,14 +1,7 @@
 <div class="container p-4">
-    <class class="row">
+    <div class="row">
 
-        <div class="col-md-10 mx-auto">
-            <div class="card card-body text-center">
-                <p>Agrega tu nueva mascota</p>
-                <a href="/reportes/add-reportes">¡Agregar!</a>
-            </div>
-        </div>
-
-        {{#each reportados }}
+        {{#each reportes}}
         <div class="col-md-3">
             <br>
             <div class="card text-center">
@@ -26,7 +19,6 @@
             </div>
         </div>
         {{else}}
-
         <div class="col-md4 mx-auto">
             <div class="card card-body text-center">
                 <p> No haz hecho ningun reporte aún ¿Hay algo que quieras denunciar?</p>
@@ -35,5 +27,5 @@
         </div>
         {{/each}}
 
-</div>
+    </div>
 </div>

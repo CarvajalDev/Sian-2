@@ -1,71 +1,70 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-        <a class="navbar-brand" href="/"><img src="img/logo_web.png" alt="SIAN"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                {{#if user}}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mis Mascotas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/mascotas">Todas las mascotas</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/mascotas/razas-peligrosas">Mascotas Peligrosas</a>
-                        <a class="dropdown-item" href="/mascotas/padrinazgo-individual">Padrinazgo Individual</a>
-                        <a class="dropdown-item" href="/mascotas/padrinazgo-comunitario">Padrinazgo Comunitario</a>
+<div class="header-area header-transparent">
+    <div class="main-header header-sticky">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+
+                <div class="col-xl-2 col-lg-2 col-md-1">
+                    <div class="logo">
+                        <a href="/"><img src="img/logo_web.png" alt=""></a>
                     </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mis Reportes
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/reportes">Ver Todos</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/reportes/list-denunciados">Denuncias</a>
-                        <a class="dropdown-item" href="/reportes/list-reportados">Reportes</a>
-                        <a class="dropdown-item" href="/reportes/list-pqrs">PQRS</a>
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-10">
+                    <div class="menu-main d-flex align-items-center justify-content-end">
+
+                        <div class="main-menu f-right d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    {{#if user}}
+                                    <li><a href="/">inicio</a></li>
+                                    <li><a href="">Mis Mascotas</a>
+                                        <ul class="submenu">
+                                            <li><a href="/mascotas">Todas las Mascotas</a></li>
+                                            <li><a href="/mascotas/razas-peligrosas">Mascotas Peligrosas</a></li>
+                                            <li><a href="/mascotas/padrinazgo-individual">Padrinazgo Individual</a>
+                                            </li>
+                                            <li><a href="/mascotas/padrinazgo-comunitario">Padrinazgo
+                                                    Comunitario</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Mis Reportes</a>
+                                        <ul class="submenu">
+                                            <li><a href="/reportes">Ver Todos</a></li>
+                                            <li><a href="/reportes/list-denunciados">Denuncias</a></li>
+                                            <li><a href="/reportes/list-reportados">Reportes</a></li>
+                                            <li><a href="/reportes/list-pqrs">PQRS</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Se busca</a>
+                                        <ul class="submenu">
+                                            <li><a href="#">Consultas</a></li>
+                                            <li><a href="#">Animales Extraviados</a></li>
+                                            <li><a href="#">Animales Hurtados</a></li>
+                                            <li><a href="#">Animales Hallados</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="blog.html">{{user.nombre}}</a>
+                                        <ul class="submenu">
+                                            <li><a href="/profile">Perfil</a></li>
+                                            <li><a href="/logout">Salir</a></li>
+                                        </ul>
+                                    </li>
+                                    {{else}}
+                                    <li><a href="/signin">Entrar</a></li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                            <a href="/signup" class="header-btn">Registrarse</a>
+                        </div>
+                        {{/if}}
                     </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Se Busca
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/">Animales Extraviados</a>
-                        <a class="dropdown-item" href="#">Animales Urtados</a>
-                        <a class="dropdown-item" href="#">Animales Hallados</a>
-                        <a class="dropdown-item" href="#">Consultas</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="far fa-user-circle"></i> {{user.nombre}}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/profile">Perfil</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/logout">Salir</a>
-                    </div>
-                </li>
-                {{else}}
-                <li class="nav-item">
-                    <a href="/signin" class="nav-link">Entrar</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/signup" class="nav-link">Registrarse</a>
-                </li>
-                {{/if}}
-            </ul>
+                </div>
+
+                <div class="col-12">
+                    <div class="mobile_menu d-block d-lg-none"></div>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
+</div>

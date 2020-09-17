@@ -3201,7 +3201,7 @@ hr {
   }
 }
 .about-area .about-img {
-  background-image: url(../img/gallery/about.png);
+  background-image: url(../img/about.png);
   background-size: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3236,7 +3236,7 @@ hr {
   }
 }
 .about-area .about-img .info-man {
-  background: #1a1f50;
+  background: #12a654;
   display: inline-block;
   padding: 23px 88px;
 }
@@ -3276,10 +3276,10 @@ hr {
   margin: 0;
 }
 .about-area .about-img .info-man.info-man2 {
-  background: #eb4916;
+  background: #fecd32;
 }
 .about-area .about-details {
-  background-image: url(../img/gallery/section_bg02.png);
+  background-image: url(../img/section_bg02.png);
   background-size: 100%;
   background-size: cover;
   background-repeat: no-repeat;

@@ -1,76 +1,101 @@
-<div class="container p-4">
+<div class="container mt-110">
     <div class="row">
-        <div class="col-md-4 mx-auto">
+        <div class="col-md-10 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <form action="/mascotas/add" method="POST" enctype="multipart/form-data">
-                        <div class="file-field">
-                            <div class="z-depth-1-half mb-4">
-                                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid"
-                                    alt="example placeholder">
+                        <div class="form-row">
+                            <div class="col-lg-6 col-md-6">
+                                <label for=""><b>Foto de Perfil de tu Mascota:</b></label>
+                                <input class="genric-btn radius" type="file" name="imagen_mascota" required>
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <div class="btn btn-mdb-color btn-rounded float-left">
-                                    <span>Foto de Mascota</span>
-                                    <input type="file" name="imagen_mascota" required>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4"><b>Nombre de tu Mascota:</b></label>
+                                <input type="text" id="myminNombre" class="form-control" name="nombre_mascota"
+                                    placeholder="Nombre" autofocus required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Tipo de Padrinazgo:</b></label>
+                                <div class="select-itms">
+                                    <select name="padrinazgo_mascota" required>
+                                        <option value="Padrinazgo individual">Padrinazgo Individual</option>
+                                        <option value="Padrinazgo comunitario">Padrinazgo Comunitario</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Tipo de Especie:</b></label>
+                                <div class="select-itms">
+                                    <select name="especie_mascota" required>
+                                        <option value="{{especies1.nombre_especie}}">{{especies1.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies2.nombre_especie}}">{{especies2.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies3.nombre_especie}}">{{especies3.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies4.nombre_especie}}">{{especies4.nombre_especie}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Tipo de Raza:</b></label>
+                                <div class="default-select" id="default-select">
+                                    <select name="raza_mascota" required>
+                                        {{#each raza}}
+                                        <option value="{{this}}">{{this}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Según el articulo 126 de la ley 1801. Tu mascota es de
+                                        raza:</b></label>
+                                <div class="select-itms">
+                                    <input type="radio" name="peligrosa_mascota" value="si" required>
+                                    <label>Peligrosa</label><br>
+                                    <input type="radio" name="peligrosa_mascota" value="no" required>
+                                    <label>No peligrosa</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="text" id="myminNombre" class="form-control" name="nombre_mascota"
-                                placeholder="Nombre" autofocus required>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Dirección:</b></label>
+                                <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección"
+                                    required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Fecha de Nacimiento:</b></label>
+                                <input class="form-control" type="date" name="nacimiento_mascota" value="" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <select name="padrinazgo_mascota" class="form-control" required>
-                                <option value="Padrinazgo individual">Padrinazgo Individual</option>
-                                <option value="Padrinazgo comunitario">Padrinazgo Comunitario</option>
-                            </select>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Tamaño de tu Mascota:</b></label>
+                                <input type="text" id="solonumeros" class="form-control" name="tamaño_mascota"
+                                    placeholder="Tamaño de mascota (cm)" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Numero de Microchip:</b></label>
+                                <input type="text" id="numerochip" class="form-control" name="microchip_mascota"
+                                    placeholder="Numero de chip">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <select name="especie_mascota" class="form-control" required>
-                                <option value="{{especies1.nombre_especie}}">{{especies1.nombre_especie}}</option>
-                                <option value="{{especies2.nombre_especie}}">{{especies2.nombre_especie}}</option>
-                                <option value="{{especies3.nombre_especie}}">{{especies3.nombre_especie}}</option>
-                                <option value="{{especies4.nombre_especie}}">{{especies4.nombre_especie}}</option>
-                            </select>
+
+
+                        <div class="form-row">
+                            <div class="col-lg-4 col-md-4">
+                                <label for=""><b>Historia Clinica de tu Mascota:</b></label>
+                                <input type="file" name="historia_clinica_mascota" class="genric-btn radius"
+                                    id="exampleInputFile" aria-describedby="fileHelp"
+                                    accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                    required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <select name="raza_mascota" class="form-control" required>
-                                {{#each raza}}
-                                <option value="{{this}}">{{this}}</option>
-                                {{/each}}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <p>Según el articulo 126 de la ley 1801. Su mascota es de raza:</p>
-                            <input type="radio" name="peligrosa_mascota" value="si" required>
-                            <label>Peligrosa</label><br>
-                            <input type="radio" name="peligrosa_mascota" value="no" required>
-                            <label>No peligrosa</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección"
-                                required>
-                        </div>
-                        <div class="form-group col-13">
-                            <input class="form-control" type="date" name="nacimiento_mascota" value="" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="solonumeros" class="form-control" name="tamaño_mascota"
-                                placeholder="Tamaño de mascota (cm)" required>
-                        </div>
-                        <div class="form-group ">
-                            <input type="text" id="numerochip" class="form-control" name="microchip_mascota"
-                                placeholder="Numero de chip">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">Historia Clinica:</label>
-                            <input type="file" name="historia_clinica_mascota" class="form-control-file"
-                                id="exampleInputFile" aria-describedby="fileHelp"
-                                accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                required>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-group mt-30">
                             <button class="btn btn-success btn-block">
                                 Registrar Mascota
                             </button>

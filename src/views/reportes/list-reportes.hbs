@@ -1,14 +1,25 @@
+<div class="slider-area2 slider-height2 d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center pt-50">
+                    <h2>Tus Reportes</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container p-4">
-    <class class="row">
+    <div class="row">
 
         <div class="col-md-10 mx-auto">
             <div class="card card-body text-center">
                 <p>Agrega tu nueva mascota</p>
-                <a href="/reportes/add-reportes">¡Agregar!</a>
+                <a href="/reportes/add-reportes" style="color: #FD2221">¡Agregar!</a>
             </div>
         </div>
 
-        {{#each reportados }}
+        {{#each denunciados}}
         <div class="col-md-3">
             <br>
             <div class="card text-center">
@@ -26,14 +37,13 @@
             </div>
         </div>
         {{else}}
-
         <div class="col-md4 mx-auto">
             <div class="card card-body text-center">
                 <p> No haz hecho ningun reporte aún ¿Hay algo que quieras denunciar?</p>
-                <a href="/reportes/add">Hacer Reporte</a>
+                <a href="/reportes/add" style="color: #FD2221">Hacer Reporte</a>
             </div>
         </div>
         {{/each}}
 
-</div>
+    </div>
 </div>

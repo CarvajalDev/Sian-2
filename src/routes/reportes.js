@@ -16,6 +16,7 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
     ubicacion_reportes,
     tipo_denuncia_reportes,
     descripcion_reportes,
+    evento_reportes,
   } = req.body;
   const newReporte = {
     evidencia_reportes,
@@ -23,6 +24,7 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
     tipo_denuncia_reportes,
     descripcion_reportes,
     user_id: req.user.id,
+    evento_reportes,
   };
   await pool.query("INSERT INTO reportes set ?", [newReporte]);
   req.flash("success", "Reporte enviado correctamente");

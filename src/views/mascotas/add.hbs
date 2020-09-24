@@ -33,17 +33,15 @@
                                         </option>
                                         <option value="{{especies2.nombre_especie}}">{{especies2.nombre_especie}}
                                         </option>
-                                        <option value="{{especies3.nombre_especie}}">{{especies3.nombre_especie}}
-                                        </option>
-                                        <option value="{{especies4.nombre_especie}}">{{especies4.nombre_especie}}
-                                        </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <label for=""><b>Tipo de Raza:</b></label>
-                                <div class="default-select" id="default-select">
+                                <div class="form-group">
                                     <select name="raza_mascota" required>
+                                        <option value="desconocida">No se conoce
+                                        </option>
                                         {{#each raza}}
                                         <option value="{{this}}">{{this}}</option>
                                         {{/each}}

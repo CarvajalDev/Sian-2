@@ -14,8 +14,8 @@
 
         <div class="col-md-10 mx-auto">
             <div class="card card-body text-center">
-                <p>Agrega tu nueva mascota</p>
-                <a href="/reportes/add-reportes" style="color: #FD2221">¡Agregar!</a>
+                <p> ¿Hay algo que quieras denunciar?</p>
+                <a href="/reportes/add-reportes" style="color: #FD2221">Hacer Denuncia</a>
             </div>
         </div>
 
@@ -34,13 +34,6 @@
                     <a href="/reportes/delete/{{id}}" class="btn btn-danger">Eliminar</a>
                     <a href="/reportes/edit/{{id}}" class="btn btn-info">editar</a>
                 </div>
-            </div>
-        </div>
-        {{else}}
-        <div class="col-md4 mx-auto">
-            <div class="card card-body text-center">
-                <p> No haz hecho ningun reporte aún ¿Hay algo que quieras denunciar?</p>
-                <a href="/reportes/add" style="color: #FD2221">Hacer Reporte</a>
             </div>
         </div>
         {{/each}}

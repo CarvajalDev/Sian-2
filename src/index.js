@@ -59,6 +59,7 @@ app.use(
   multer({ storage }).fields([
     { name: "imagen_mascota" },
     { name: "historia_clinica_mascota" },
+    { name: "evidencia_reportes", maxCount: 4 },
   ])
 );
 

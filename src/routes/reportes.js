@@ -11,6 +11,8 @@ cloudinary.config({
 
 const fs = require("fs-extra");
 
+const nodemailer = require("nodemailer");
+
 const pool = require("../database");
 const { isLoggedIn } = require("../lib/auth");
 
@@ -26,21 +28,7 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
     descripcion_reportes,
     evento_reportes,
   } = req.body;
-  /*const result1 = await cloudinary.v2.uploader.upload(
-    req.files["evidencia_reportes"][0].path
-  );
-  const result2 = await cloudinary.v2.uploader.upload(
-    req.files["evidencia_reportes"][1].path
-  );
-  const result3 = await cloudinary.v2.uploader.upload(
-    req.files["evidencia_reportes"][2].path
-  );
-  const result4 = await cloudinary.v2.uploader.upload(
-    req.files["evidencia_reportes"][3].path
-  );
 
-  const imagesURl = [result1.url, result2.url, result3.url, result4.url];
-  const imgToBD = imagesURl.toString();*/
   const newReporte = {
     ubicacion_reportes,
     tipo_denuncia_reportes,
@@ -48,12 +36,39 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
     user_id: req.user.id,
     evento_reportes,
   };
+
   await pool.query("INSERT INTO reportes set ?", [newReporte]);
 
-  /*await fs.unlink(req.files["evidencia_reportes"][0].path);
-  await fs.unlink(req.files["evidencia_reportes"][1].path);
-  await fs.unlink(req.files["evidencia_reportes"][2].path);
-  await fs.unlink(req.files["evidencia_reportes"][3].path);*/
+  const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "sianneiva@gmail.com",
+      pass: "sianneiva123",
+    },
+  });
+  const mailOptions = {
+    from: "sianneiva@gmail.com",
+    to: "h_carvajal@outlook.es",
+    subject: "Notificacion | Reportes ",
+    text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
+      \n *Evento:${newReporte.evento_reportes} 
+      \n *Lugar:${newReporte.ubicacion_reportes}
+      \n *Descripcion: ${newReporte.descripcion_reportes}
+      \n
+      \n
+      \n
+      Este es un mensaje automático, evite responder a este correo.`,
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+      res.send(500, error.message);
+    } else {
+      console.log("Email sent");
+      res.status(200).jsonp(req.body);
+    }
+  });
 
   req.flash("success", "Reporte enviado correctamente");
   res.redirect("/reportes");
@@ -138,6 +153,7 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
 
   const imagesURl = [result1.url, result2.url, result3.url, result4.url];
   const imgToBD = imagesURl.toString();
+
   const newReporte = {
     evidencia_reportes: imgToBD,
     ubicacion_reportes,
@@ -152,6 +168,39 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
   await fs.unlink(req.files["evidencia_reportes"][1].path);
   await fs.unlink(req.files["evidencia_reportes"][2].path);
   await fs.unlink(req.files["evidencia_reportes"][3].path);
+
+  const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "sianneiva@gmail.com",
+      pass: "sianneiva123",
+    },
+  });
+  const mailOptions = {
+    from: "sianneiva@gmail.com",
+    to: "h_carvajal@outlook.es",
+    subject: "Notificacion | Reportes ",
+    text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
+      \n Evento: ${newReporte.evento_reportes} 
+      \n Lugar: ${newReporte.ubicacion_reportes}
+      \n Descripcion: ${newReporte.descripcion_reportes}
+      \n Evidencias: ${result1.url}, ${result2.url}, ${result3.url}, ${result4.url}
+      \n
+      \n
+      \n
+      Este es un mensaje automático, evite responder a este correo.`,
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+      res.send(500, error.message);
+    } else {
+      console.log("Email sent");
+      res.status(200).jsonp(req.body);
+    }
+  });
+
   req.flash("success", "Denuncia enviada correctamente");
   res.redirect("/reportes");
 });
@@ -165,7 +214,60 @@ router.get("/list-denunciados", isLoggedIn, async (req, res) => {
 });
 
 // RUTAS DE PQRS
-/*
+
+router.get("/add-pqrs", isLoggedIn, (req, res) => {
+  res.render("reportes/add-pqrs");
+});
+
+router.post("/add-pqrs", isLoggedIn, async (req, res) => {
+  const {
+    ubicacion_reportes,
+    tipo_denuncia_reportes,
+    descripcion_reportes,
+  } = req.body;
+
+  const newReporte = {
+    ubicacion_reportes,
+    tipo_denuncia_reportes,
+    descripcion_reportes,
+    user_id: req.user.id,
+  };
+  await pool.query("INSERT INTO reportes set ?", [newReporte]);
+
+  const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "sianneiva@gmail.com",
+      pass: "sianneiva123",
+    },
+  });
+  const mailOptions = {
+    from: "sianneiva@gmail.com",
+    to: "h_carvajal@outlook.es",
+    subject: "Notificacion | Reportes ",
+    text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
+      \n Lugar: ${newReporte.ubicacion_reportes}
+      \n Descripcion: ${newReporte.descripcion_reportes}
+      \n
+      \n
+      \n
+      Este es un mensaje automático, evite responder a este correo.`,
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+      res.send(500, error.message);
+    } else {
+      console.log("Email sent");
+      res.status(200).jsonp(req.body);
+    }
+  });
+
+  req.flash("success", "PQRS enviado correctamente");
+  res.redirect("/reportes");
+});
+
 router.get("/list-pqrs", isLoggedIn, async (req, res) => {
   const pqrs = await pool.query(
     "SELECT * FROM reportes WHERE tipo_denuncia_reportes = 'pqrs' AND user_id = ?",
@@ -173,6 +275,5 @@ router.get("/list-pqrs", isLoggedIn, async (req, res) => {
   );
   res.render("reportes/list-pqrs", { pqrs });
 });
-*/
 
 module.exports = router;

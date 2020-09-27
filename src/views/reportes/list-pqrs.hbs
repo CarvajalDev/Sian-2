@@ -15,11 +15,11 @@
         <div class="col-md-10 mx-auto">
             <div class="card card-body text-center">
                 <p>¿Tienes alguna pregunta, queja o reclamo?</p>
-                <a href="/reportes/add-reportes" style="color: #FD2221">¡Cuentanos!</a>
+                <a href="/reportes/add-pqrs" style="color: #FD2221">¡Cuentanos!</a>
             </div>
         </div>
 
-        {{#each denunciados}}
+        {{#each pqrs}}
         <div class="col-md-3">
             <br>
             <div class="card text-center">
@@ -27,12 +27,12 @@
                     <h3 class="card-title text-uppercase">
                         {{	tipo_denuncia_reportes	}}
                     </h3>
-                    <p class="m-2">{{ubicacion_reportes}}</p>
-                    <p class="m-2">{{descripcion_reportes}}</p>
-                    <p class="m-2">{{evidencia_reportes}}</p>
-                    <p class="m-2">{{timeago 	crated_at	}}</p>
-                    <a href="/reportes/delete/{{id}}" class="btn btn-danger">Eliminar</a>
-                    <a href="/reportes/edit/{{id}}" class="btn btn-info">editar</a>
+                    <p class="m-2" style="color:#b3b3b3">{{timeago 	crated_at	}}</p>
+                    <p class="m-2"><span style="color: #FD2221">Lugar: </span>{{ubicacion_reportes}}.</p>
+                    <p class="m-2"><span style="color: #FD2221">Descripción: </span>{{descripcion_reportes}}.</p>
+
+                    <!--<a href="/reportes/delete/{{id}}" class="btn btn-danger">Eliminar</a>
+                    <a href="/reportes/edit/{{id}}" class="btn btn-info">editar</a>-->
                 </div>
             </div>
         </div>

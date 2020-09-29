@@ -16,7 +16,7 @@
                                 <ul id="navigation">
                                     {{#if user}}
                                     <li><a href="/">inicio</a></li>
-                                    <li><a href="">Mis Mascotas</a>
+                                    <li><a>Mis Mascotas</a>
                                         <ul class="submenu">
                                             <li><a href="/mascotas">Todas las Mascotas</a></li>
                                             <li><a href="/mascotas/razas-peligrosas">Mascotas Peligrosas</a></li>
@@ -26,7 +26,7 @@
                                                     Comunitario</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Mis Reportes</a>
+                                    <li><a>Mis Reportes</a>
                                         <ul class="submenu">
                                             <li><a href="/reportes">Ver Todos</a></li>
                                             <li><a href="/reportes/list-denunciados">Denuncias</a></li>
@@ -34,15 +34,14 @@
                                             <li><a href="/reportes/list-pqrs">PQRS</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Se busca</a>
+                                    <li><a>Se busca</a>
                                         <ul class="submenu">
-                                            <li><a href="#">Consultas</a></li>
-                                            <li><a href="#">Animales Extraviados</a></li>
-                                            <li><a href="#">Animales Hurtados</a></li>
-                                            <li><a href="#">Animales Hallados</a></li>
+                                            <li><a href="/busca">Consultas</a></li>
+                                            <li><a href="/busca/list-extraviado">Animales Extraviados</a></li>
+                                            <li><a href="/busca/list-hurtado">Animales Hurtados</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#"><i class="far fa-user-circle"></i> {{user.nombre}}</a>
+                                    <li><a><i class="far fa-user-circle"></i> {{user.nombre}}</a>
                                         <ul class="submenu">
                                             <li><a href="/profile">Perfil</a></li>
                                             <li><a href="/logout">Salir</a></li>

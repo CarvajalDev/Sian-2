@@ -78,3 +78,24 @@ CREATE TABLE imagenes
     mascota_id INT(11),
     CONSTRAINT fk_mascota FOREIGN KEY (mascota_id) References mascotas(id)
 );
+
+--Table SeBusca
+CREATE TABLE busquedas
+(
+    id INT(11) NOT NULL,
+    user_id INT(11),
+    nombre_seBusca CHAR(30) NOT NULL,
+    ubicacion_seBusca CHAR(50) NOT NULL,
+    edad_seBusca DATE NOT NULL,
+    raza_seBusca CHAR(30) NOT NULL,
+    caracteristica_seBusca VARCHAR(200) NOT NULL,
+    crated_at timestamp NOT NULL DEFAULT current_timestamp,
+    CONSTRAINT fk_busqueda FOREIGN KEY (user_id) References users(id),
+);
+
+ALTER TABLE busquedas
+    ADD PRIMARY KEY (id);
+
+ALTER TABLE busquedas
+    MODIFY id INT
+(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;

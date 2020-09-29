@@ -59,6 +59,7 @@ app.use(
   multer({ storage }).fields([
     { name: "imagen_mascota" },
     { name: "historia_clinica_mascota" },
+    { name: "foto_seBusca" },
     { name: "evidencia_reportes", maxCount: 4 },
   ])
 );
@@ -75,6 +76,7 @@ app.use(require("./routes"));
 app.use(require("./routes/authentication"));
 app.use("/mascotas", require("./routes/mascotas"));
 app.use("/reportes", require("./routes/reportes"));
+app.use("/busca", require("./routes/seBusca"));
 
 //public
 app.use(express.static(path.join(__dirname, "public")));

@@ -79,7 +79,6 @@ router.get("/", isLoggedIn, async (req, res) => {
     "SELECT * FROM reportes WHERE user_id = ?",
     [req.user.id]
   );
-  console.log(reportes);
   res.render("reportes/list", { reportes });
 });
 

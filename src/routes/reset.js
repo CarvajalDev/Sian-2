@@ -1,31 +1,56 @@
 const express = require("express");
 const router = express.Router();
 
+const pool = require("../database");
+const helpers = require("../lib/helpers");
+
 router.get("/", (req, res) => {
   res.render("auth/reset", {});
 });
 
 router.get("/:id", async (req, res) => {
-  res.render("auth/reset", {});
-  const sendToken = req.headers;
+  const { id } = req.params;
+  const allTokens = await pool.query(
+    "SELECT * FROM users WHERE resetToken = ?",
+    [id]
+  );
 
-  console.log(sendToken);
+  console.log(allTokens[0].resetToken + " AQUI DEBERIA IR EL TOKEN");
 
-  /*const { id } = req.params;
-  const mascotas = await dbPool.query("SELECT * FROM mascotas WHERE id = ?", [
+  res.render("auth/reset", { allToken: allTokens[0].resetToken });
+  //SESION EXPIRADA
+  /*const tokenDB = await pool.query(
+    "SELECT * FROM users WHERE resultToken = ? AND expireToken = ?",
+    [id, Date.now]
+  );
+
+  if(!tokenDB){
+    req.flash("message", "El tiempo del enlace Expiró");
+    res.redirect("auth/reset");
+  }*/
+});
+
+router.post("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  const changePassword = {
+    password,
+    resetToken: undefined,
+    expireToken: undefined,
+  };
+
+  changePassword.password = await helpers.encryptPassword(password);
+
+  await pool.query("UPDATE users set ? WHERE resetToken = ?", [
+    changePassword,
     id,
   ]);
-  const especies = await dbPool.query("SELECT * FROM especies");
-  const razas = await dbPool.query("SELECT nombre_raza FROM razas");
-  const nombreRazas = razas.map((elegir) => {
-    return elegir.nombre_raza;
-  });
-  res.render("mascotas/edit", {
-    mascota: mascotas[0],
-    raza: nombreRazas,
-    especies1: especies[0],
-    especies2: especies[1],
-  });*/
+
+  req.flash("success", "contraseña cambiada correctamente");
+  res.redirect("/signin");
+
+  console.log(id + " THIS");
 });
 
 module.exports = router;

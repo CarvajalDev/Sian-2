@@ -96,7 +96,7 @@ router.post("/forgot", async (req, res) => {
       to: `${newEmail}`,
       subject: "Recuperación de Contraseña | SIAN ",
       html: `<P>Tu pediste la recuperación de contraseña:</p>
-        <h5>Este es el <a href="http://localhost:4000/reset/${miToken()}">Enlace</a> para cambiar tu contraseña. Asegurate de recordarla y sobre todo que sea segura</h5>`,
+        <h5>Este es el <a href="http://localhost:4000/reset/${recuperar.resetToken}">Enlace</a> para cambiar tu contraseña. Asegurate de recordarla y sobre todo que sea segura</h5>`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -119,7 +119,7 @@ router.post("/forgot", async (req, res) => {
   console.log(emailDB[0]);
 });
 
-router.post("/update-password", async (req, res) => {
+/*router.post("/update-password", async (req, res) => {
   const { password } = req.body;
   const sendToken = req.headers;
   const sendNewPassword = {
@@ -128,9 +128,9 @@ router.post("/update-password", async (req, res) => {
   /*await pool.query("UPDATE users set ? WHERE resetToken = ?", [
     sendNewPassword,
     sendToken,
-  ]);*/
+  ]);
 
   console.log(sendToken);
-});
+});*/
 
 module.exports = router;

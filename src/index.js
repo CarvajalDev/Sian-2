@@ -1,4 +1,5 @@
 const express = require("express");
+const body_parser = require("body-parser");
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
@@ -34,6 +35,7 @@ app.engine(
 app.set("view engine", ".hbs");
 
 //Middlewares
+app.use(body_parser.urlencoded({ extended: false }));
 app.use(
   session({
     secret: "SianSesionMysqlNode",
@@ -77,6 +79,7 @@ app.use(require("./routes/authentication"));
 app.use("/mascotas", require("./routes/mascotas"));
 app.use("/reportes", require("./routes/reportes"));
 app.use("/busca", require("./routes/seBusca"));
+app.use("/reset", require("./routes/reset"));
 
 //public
 app.use(express.static(path.join(__dirname, "public")));

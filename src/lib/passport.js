@@ -1,6 +1,8 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
+const nodemailer = require("nodemailer");
+
 const dbPool = require("../database");
 const helpers = require("./helpers");
 
@@ -74,6 +76,31 @@ passport.use(
 
       const result = await dbPool.query("INSERT INTO users SET ?", [newUser]);
       newUser.id = result.insertId;
+
+      const transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: "sianneiva@gmail.com",
+          pass: "sianneiva123",
+        },
+      });
+
+      const mailOptions = {
+        from: "sianneiva@gmail.com",
+        to: "h_carvajal@outlook.es",
+        subject: "Notificacion | Reportes ",
+        text: `Este es un mensaje automático, evite responder a este correo.`,
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+          res.send(500, error.message);
+        } else {
+          console.log("Correo enviado");
+          res.status(200).jsonp(req.body);
+        }
+      });
 
       return done(null, newUser);
     }

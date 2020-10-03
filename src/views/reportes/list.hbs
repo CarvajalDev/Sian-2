@@ -1,9 +1,9 @@
-<div class="slider-area2 slider-height2 d-flex align-items-center">
+<div class="slider-area2 slider-area3 slider-height2 d-flex align-items-center">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="hero-cap text-center pt-50">
-                    <h2>Tus Reportes Creados</h2>
+                    <h2><span style="color: #f52c2c;">| </span> Reportes Creados <img src="img/complaint.png"></h2>
                 </div>
             </div>
         </div>
@@ -15,10 +15,10 @@
         {{#each reportes}}
         <div class="col-md-3">
             <br>
-            <div class="card">
-                <div class="card-body">
+            <div class="card shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
+                <div class=" card-body">
                     <div class="text-center">
-                        <h3 class="card-title text-uppercase">
+                        <h3 class="card-title text-uppercase" style="color: #FD2221">
                             {{	tipo_denuncia_reportes	}}
                         </h3>
                         <p class="m-2" style="color:#b3b3b3">{{timeago 	crated_at	}}</p>

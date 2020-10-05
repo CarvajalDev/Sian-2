@@ -2440,6 +2440,19 @@ hr {
   background-position: center center;
   background-size: cover;
 }
+.slider-area4 {
+  background-image: url(../img/hero/fondoVerde.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.slider-area1 {
+  background-image: url(../img/hero/hero2.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .slider-area2 .hero-cap {
     padding-top: 50px;
@@ -2605,6 +2618,30 @@ hr {
   -o-transition: all 0.4s ease-out 0s;
   transition: all 0.4s ease-out 0s;
 }
+.yellowBackground {
+  background-color: #f7e39f !important;
+}
+.yellowBackground:hover {
+  background-color: #ffffff !important;
+  border-color: #fecd32 !important;
+}
+
+.redBackground {
+  background-color: #ed9291 !important;
+}
+.redBackground:hover {
+  background-color: #ffffff !important;
+  border-color: #f52c2c !important;
+}
+
+.greenBackground {
+  background-color: #bcf8d6 !important;
+}
+.greenBackground:hover {
+  background-color: #ffffff !important;
+  border-color: #12a654 !important;
+}
+
 @media (max-width: 575px) {
   .our-services .single-services {
     padding: 47px 19px;
@@ -2734,6 +2771,7 @@ hr {
   width: 100%;
   height: 837px;
 }
+
 .contact-form-main .form-tittle {
   background-image: url(../img/gallery/contact_bg.png);
   background-size: cover;

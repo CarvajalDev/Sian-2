@@ -125,4 +125,9 @@ router.get("/list-hurtado", isLoggedIn, async (req, res) => {
   res.render("seBusca/list-hurtados", { hurtados });
 });
 
+router.get("/list-publico", async (req, res) => {
+  const buscaPublico = await pool.query("SELECT * FROM busquedas");
+  res.render("seBusca/list-publico", { buscaPublico });
+});
+
 module.exports = router;

@@ -15,6 +15,8 @@ const passport = require("passport");
 const { database } = require("./keys");
 const { dirname } = require("path");
 
+var favicon = require("serve-favicon");
+
 //inicializar
 const app = express();
 require("./lib/passport");
@@ -50,6 +52,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(favicon(path.join(__dirname, "public", "img", "favicon.ico")));
 
 const storage = multer.diskStorage({
   destination: path.join(__dirname, "public/uploads"),

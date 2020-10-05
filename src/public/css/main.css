@@ -2391,6 +2391,10 @@ hr {
 .services-area .single-services:hover {
   background: #fff;
 }
+.newBackground {
+  background-color: #f7e39f !important;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .services-area .single-services {
     padding: 45px 33px 70px 42px;

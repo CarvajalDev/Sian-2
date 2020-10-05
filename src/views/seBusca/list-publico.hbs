@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="hero-cap text-center pt-50">
-                    <h2><span style="color: #12a654;">Se Busca |</span> Animales Hurtados</h2>
+                    <h2><span style="color: #12a654;">| </span>Consultas</h2>
                 </div>
             </div>
         </div>
@@ -24,15 +24,16 @@
     </div>
 
     <div class="row">
-        {{#each hurtados}}
+        {{#each buscaPublico}}
         <div class="col-md-3">
             <br>
             <div class="card text-center shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
                 <div class="card-body">
-                    <h3 class="card-title text-uppercase" style="color: #12a654; font-weight: bold;">
+                    <h3 class="card-title text-uppercase" style="color: #12a654;; font-weight: bold;">
                         Se Busca
                     </h3>
                     <img src="{{foto_seBusca}}" class="img-fluid" alt="foto de mascota">
+                    <p align="center" style="color: #12a654;">{{tipo_seBusca}}</p>
                     <p class="m-1" align="left"><span style="color: #12a654;">Nombre:</span> {{nombre_seBusca}}</p>
                     <p class="m-1" align="left"><span style="color: #12a654;">Raza:</span> {{raza_seBusca}}</p>
                     <p class="m-1" align="left"><span style="color: #12a654;">Edad:</span> {{edad_seBusca}} años</p>
@@ -43,7 +44,7 @@
                     </p>
                     <br>
                     <!-- <p>{{timeago created_at}}</p> -->
-                    <a href="/busca/delete/{{id}}" class="genric-btn danger-border">Eliminar</a>
+                    <!--<a href="/busca/delete/{{id}}" class="genric-btn danger-border">Eliminar</a>-->
                     <!--<a href="mascotas/edit/{{id}}" class="genric-btn primary">Editar</a>-->
                 </div>
             </div>

@@ -1,7 +1,8 @@
-<div class="container p-4">
+<div class="container mt-80">
     <div class="row">
         <div class="col-md-10 mx-auto">
-            <div class="card">
+            <h2>| Edita los datos de tu Mascota</h2>
+            <div class="card mt-20">
                 <div class="card-body">
                     <form action="/mascotas/edit/{{mascota.id}}" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
@@ -69,7 +70,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for=""><b>Fecha de Nacimiento:</b></label>
-                                <input class="form-control" type="date" name="nacimiento_mascota" value="" required>
+                                <input class="form-control" type="date" name="nacimiento_mascota" value="">
                             </div>
                         </div>
                         <div class="form-row">

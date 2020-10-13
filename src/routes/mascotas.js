@@ -41,11 +41,13 @@ router.post("/add", isLoggedIn, async (req, res) => {
     tamaño_mascota,
     microchip_mascota,
     historia_clinica_mascota,
+    carta_mascota_peligrosa,
   } = req.body;
   const result = await cloudinary.v2.uploader.upload(
     req.files["imagen_mascota"][0].path
   );
   const fileUpload = req.files["historia_clinica_mascota"][0].filename;
+  const fileUpload2 = req.files["historia_clinica_mascota"][0].path;
   const newMascota = {
     imagen_mascota: result.url,
     nombre_mascota,
@@ -58,6 +60,7 @@ router.post("/add", isLoggedIn, async (req, res) => {
     tamaño_mascota,
     microchip_mascota,
     historia_clinica_mascota: fileUpload,
+    carta_mascota_peligrosa: fileUpload2,
     user_id: req.user.id,
   };
 
@@ -65,6 +68,7 @@ router.post("/add", isLoggedIn, async (req, res) => {
 
   await fs.unlink(req.files["imagen_mascota"][0].path);
   await fs.unlink(req.files["historia_clinica_mascota"][0].path);
+  await fs.unlink(req.files["carta_mascota_peligrosa"][0].path);
 
   req.flash("success", "mascota guardada correctamente");
   res.redirect("/mascotas");
@@ -117,12 +121,14 @@ router.post("/edit/:id", isLoggedIn, async (req, res) => {
     tamaño_mascota,
     microchip_mascota,
     historia_clinica_mascota,
+    carta_mascota_peligrosa,
   } = req.body;
 
   const result = await cloudinary.v2.uploader.upload(
     req.files["imagen_mascota"][0].path
   );
   const fileUpload = req.files["historia_clinica_mascota"][0].filename;
+  const fileUpload2 = req.files["carta_mascota_peligrosa"][0].path;
   const newMascota = {
     imagen_mascota: result.url,
     nombre_mascota,
@@ -135,11 +141,13 @@ router.post("/edit/:id", isLoggedIn, async (req, res) => {
     tamaño_mascota,
     microchip_mascota,
     historia_clinica_mascota: fileUpload,
+    carta_mascota_peligrosa: fileUpload2,
   };
   await dbPool.query("UPDATE mascotas set ? WHERE id = ?", [newMascota, id]);
 
   await fs.unlink(req.files["imagen_mascota"][0].path);
   await fs.unlink(req.files["historia_clinica_mascota"][0].path);
+  await fs.unlink(req.files["carta_mascota_peligrosa"][0].path);
 
   req.flash("success", "Mascota editada correctamente");
   res.redirect("/mascotas");

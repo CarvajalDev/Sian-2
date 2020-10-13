@@ -66,6 +66,8 @@ app.use(
     { name: "historia_clinica_mascota" },
     { name: "foto_seBusca" },
     { name: "evidencia_reportes", maxCount: 4 },
+    { name: "evidencia_formato" },
+    { name: "carta_mascota_peligrosa" },
   ])
 );
 

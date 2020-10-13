@@ -136,6 +136,7 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
     tipo_denuncia_reportes,
     descripcion_reportes,
     evento_reportes,
+    evidencia_formato,
   } = req.body;
   const result1 = await cloudinary.v2.uploader.upload(
     req.files["evidencia_reportes"][0].path
@@ -153,13 +154,16 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
   const imagesURl = [result1.url, result2.url, result3.url, result4.url];
   const imgToBD = imagesURl.toString();
 
+  const fileUpload = await req.files["evidencia_formato"][0].path;
+
   const newReporte = {
     evidencia_reportes: imgToBD,
     ubicacion_reportes,
     tipo_denuncia_reportes,
     descripcion_reportes,
-    user_id: req.user.id,
     evento_reportes,
+    evidencia_formato: fileUpload,
+    user_id: req.user.id,
   };
   await pool.query("INSERT INTO reportes set ?", [newReporte]);
 
@@ -167,6 +171,7 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
   await fs.unlink(req.files["evidencia_reportes"][1].path);
   await fs.unlink(req.files["evidencia_reportes"][2].path);
   await fs.unlink(req.files["evidencia_reportes"][3].path);
+  await fs.unlink(req.files["evidencia_formato"][0].path);
 
   const transporter = nodemailer.createTransport({
     service: "Gmail",
@@ -179,11 +184,14 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
     from: "sianneiva@gmail.com",
     to: "h_carvajal@outlook.es",
     subject: "Notificacion | Reportes ",
+    attachments: [{filename: 'formato_denuncia.docx',
+    path: `${fileUpload}` }],
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
       \n Evento: ${newReporte.evento_reportes} 
       \n Lugar: ${newReporte.ubicacion_reportes}
       \n Descripcion: ${newReporte.descripcion_reportes}
       \n Evidencias: ${result1.url}, ${result2.url}, ${result3.url}, ${result4.url}
+      \n 
       \n
       \n
       \n

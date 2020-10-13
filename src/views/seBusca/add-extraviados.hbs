@@ -1,14 +1,15 @@
 <div class="container mt-80">
     <div class="row">
         <div class="col-md-10 mx-auto">
-            <h2>| Publica tu Mascota Extraviada</h2>
+            <h2>| Publica tu Mascota Perdida</h2>
             <div class="card mt-20">
                 <div class="card-body">
                     <form action="/busca/add-extraviado" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col-lg-4 col-md-4">
                                 <label for=""><b>Foto de Mascota Extraviada:</b></label>
-                                <input class="genric-btn radius" type="file" name="foto_seBusca" required>
+                                <input class="genric-btn radius" type="file" name="foto_seBusca" accept="image/*"
+                                    required>
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <label for=""><b>Tipo de Busqueda:</b></label>

@@ -3,9 +3,9 @@ const router = express.Router();
 
 const cloudinary = require("cloudinary");
 cloudinary.config({
-  cloud_name: 'dkng21wu5',
-  api_key: '442276193375725',
-  api_secret: 'eaoNhDPYvcAVe-32rJndXWK_4Xc',
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const fs = require("fs-extra");

@@ -68,6 +68,7 @@ app.use(
     { name: "evidencia_reportes", maxCount: 4 },
     { name: "evidencia_formato" },
     { name: "carta_mascota_peligrosa" },
+    { name: "vacunacion_mascota" },
   ])
 );
 

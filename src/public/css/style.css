@@ -2827,7 +2827,7 @@ hr {
   width: 100%;
   border-radius: 0;
 }
-.contact-form-main #contact-form .nice-select {
+/*.contact-form-main #contact-form .nice-select {
   background: #f9f9f9;
   height: 60px;
   width: 100%;
@@ -2839,21 +2839,21 @@ hr {
   padding-top: 10px;
   border-radius: 0px;
   border-bottom: 1px solid #e1e4e8;
-}
-.contact-form-main #contact-form .nice-select::after {
+}*/
+/*.contact-form-main #contact-form .nice-select::after {
   border-bottom: 2px solid #a3a3a3;
   border-right: 2px solid #a3a3a3;
   height: 7px;
   right: 41px;
   width: 7px;
-}
-.contact-form-main #contact-form .nice-select.open .list {
+}*/
+/*.contact-form-main #contact-form .nice-select.open .list {
   width: 100%;
   border-radius: 0;
-}
-.contact-form-main #contact-form .nice-select .option {
+}*/
+/*.contact-form-main #contact-form .nice-select .option {
   color: #a3a3a3;
-}
+}*/
 .contact-form-main #contact-form textarea {
   color: #a3a3a3;
   background: #f9f9f9;
@@ -4715,7 +4715,7 @@ hr {
   width: 100%;
   text-transform: capitalize;
 }
-.popup_box .nice-select {
+/*.popup_box .nice-select {
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
   border: solid 1px #e2e2e2;
@@ -4747,8 +4747,8 @@ hr {
   font-size: 16px;
   font-weight: 400;
   color: #919191;
-}
-.popup_box .nice-select::after {
+}*/
+/*.popup_box .nice-select::after {
   content: "\f0d7";
   display: block;
   height: 5px;
@@ -4762,8 +4762,8 @@ hr {
   font-family: fontawesome;
   color: #919191;
   font-size: 15px;
-}
-.popup_box .nice-select.open .list {
+}*/
+/*.popup_box .nice-select.open .list {
   opacity: 1;
   pointer-events: auto;
   -webkit-transform: scale(1) translateY(0);
@@ -4771,11 +4771,11 @@ hr {
   transform: scale(1) translateY(0);
   height: 100px;
   overflow-y: scroll;
-}
-.popup_box .nice-select.list {
+}*/
+/*.popup_box .nice-select.list {
   height: 200px;
   overflow-y: scroll;
-}
+}*/
 #test-form {
   display: inline-block;
   margin: auto;
@@ -5741,23 +5741,23 @@ del {
 .default-select {
   height: 40px;
 }
-.default-select .nice-select {
+/*.default-select .nice-select {
   border: none;
   border-radius: 0px;
   height: 40px;
   background: #f9f9ff;
   padding-left: 20px;
   padding-right: 40px;
-}
-.default-select .nice-select .list {
+}*/
+/*.default-select .nice-select .list {
   margin-top: 0;
   border: none;
   border-radius: 0px;
   box-shadow: none;
   width: 100%;
   padding: 10px 0 10px 0px;
-}
-.default-select .nice-select .list .option {
+}*/
+/*.default-select .nice-select .list .option {
   font-weight: 300;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -5767,27 +5767,27 @@ del {
   min-height: 28px;
   font-size: 12px;
   padding-left: 20px;
-}
-.default-select .nice-select .list .option.selected {
+}*/
+/*.default-select .nice-select .list .option.selected {
   color: #1f2b7b;
   background: transparent;
-}
-.default-select .nice-select .list .option:hover {
+}*/
+/*.default-select .nice-select .list .option:hover {
   color: #1f2b7b;
   background: transparent;
-}
+}*/
 .default-select .current {
   margin-right: 50px;
   font-weight: 300;
 }
-.default-select .nice-select::after {
+/*.default-select .nice-select::after {
   right: 20px;
-}
+}*/
 .form-select {
   height: 40px;
   width: 100%;
 }
-.form-select .nice-select {
+/*.form-select .nice-select {
   border: none;
   border-radius: 0px;
   height: 40px;
@@ -5795,16 +5795,16 @@ del {
   padding-left: 45px;
   padding-right: 40px;
   width: 100%;
-}
-.form-select .nice-select .list {
+}*/
+/*.form-select .nice-select .list {
   margin-top: 0;
   border: none;
   border-radius: 0px;
   box-shadow: none;
   width: 100%;
   padding: 10px 0 10px 0px;
-}
-.form-select .nice-select .list .option {
+}*/
+/*.form-select .nice-select .list .option {
   font-weight: 300;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -5814,22 +5814,22 @@ del {
   min-height: 28px;
   font-size: 12px;
   padding-left: 45px;
-}
-.form-select .nice-select .list .option.selected {
+}*/
+/*.form-select .nice-select .list .option.selected {
   color: #1f2b7b;
   background: transparent;
-}
-.form-select .nice-select .list .option:hover {
+}*/
+/*.form-select .nice-select .list .option:hover {
   color: #1f2b7b;
   background: transparent;
-}
+}*/
 .form-select .current {
   margin-right: 50px;
   font-weight: 300;
 }
-.form-select .nice-select::after {
+/*.form-select .nice-select::after {
   right: 20px;
-}
+}*/
 .mt-10 {
   margin-top: 10px;
 }

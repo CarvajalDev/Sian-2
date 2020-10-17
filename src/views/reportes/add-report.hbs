@@ -24,13 +24,11 @@
                                 <label for=""><b>Causa:</b></label>
                                 <div class="form-group">
                                     <select name="evento_reportes" required>
-                                        <option></option>
+
                                         <!--<option value="Animales Maltratados">Animales Maltratados
                                         </option>
                                         <option value="Animales Abandonados">Animales Abandonados
                                         </option>-->
-                                        <option value="Animales Encontrados">Animales Encontrados
-                                        </option>
                                         <!--<option value="Conflictos y ataques.">Contravenciones, Conflictos y Ataques
                                         </option>-->
                                         <option value="Animales heridos, graves accidentados">Animales heridos,
@@ -49,7 +47,8 @@
                             <div class="form-group col-md-6">
                                 <label for=""><b>Describenos lo que quieres reportar:</b></label>
                                 <textarea type="text" class="form-control" name="descripcion_reportes"
-                                    placeholder="Descripción" rows="5" required></textarea>
+                                    placeholder="Descripción" rows="5" maxlength="200" required></textarea>
+                                <p align="right"><i>Escribe hasta 200 caracteres</i></p>
                             </div>
                             <div class="form-group col-md-6">
                                 <!-- <label for=""><b>Adjuntar Evidencia:</b></label>

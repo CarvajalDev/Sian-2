@@ -56,6 +56,9 @@
                                 <label for=""><b>Tipo de Raza:</b></label>
                                 <div>
                                     <select name="raza_mascota" required>
+
+                                        <option value="{{mascota.raza_mascota}}">{{mascota.raza_mascota}}
+                                        </option>
                                         <option value="Desconocida">No se conoce
                                         </option>
                                         {{#each raza}}
@@ -85,7 +88,8 @@
                             <div class="form-group col-md-6">
                                 <label for=""><b>Numero de Microchip:</b></label>
                                 <input type="text" id="numerochip" class="form-control" name="microchip_mascota"
-                                    placeholder="Numero de chip" value="{{mascota.microchip_mascota}}" required>
+                                    placeholder="Numero de chip" value="{{mascota.microchip_mascota}}" maxlength="10"
+                                    required>
                             </div>
                         </div>
                         <div class="form-row mt-10">

@@ -167,12 +167,6 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
   };
   await pool.query("INSERT INTO reportes set ?", [newReporte]);
 
-  await fs.unlink(req.files["evidencia_reportes"][0].path);
-  await fs.unlink(req.files["evidencia_reportes"][1].path);
-  await fs.unlink(req.files["evidencia_reportes"][2].path);
-  await fs.unlink(req.files["evidencia_reportes"][3].path);
-  await fs.unlink(req.files["evidencia_formato"][0].path);
-
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -184,7 +178,7 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
     from: "sianneiva@gmail.com",
     to: "h_carvajal@outlook.es",
     subject: "Notificacion | Reportes ",
-    attachments: [{filename: 'formato_denuncia.docx',
+    attachments: [{filename: 'denuncia.docx',
     path: `${fileUpload}` }],
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
       \n Evento: ${newReporte.evento_reportes} 
@@ -207,6 +201,12 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
       res.status(200).jsonp(req.body);
     }
   });
+
+ // await fs.unlink(req.files["evidencia_reportes"][0].path);
+ // await fs.unlink(req.files["evidencia_reportes"][1].path);
+ // await fs.unlink(req.files["evidencia_reportes"][2].path);
+ // await fs.unlink(req.files["evidencia_reportes"][3].path);
+ // await fs.unlink(req.files["evidencia_formato"][0].path);
 
   req.flash("success", "Denuncia enviada correctamente");
   res.redirect("/reportes");

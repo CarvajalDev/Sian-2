@@ -34,6 +34,8 @@ router.post("/add-extraviado", isLoggedIn, async (req, res) => {
     edad_seBusca,
     raza_seBusca,
     caracteristica_seBusca,
+    telefono_seBusca,
+    recompensa_seBusca,
     foto_seBusca,
     tipo_seBusca,
   } = req.body;
@@ -46,6 +48,8 @@ router.post("/add-extraviado", isLoggedIn, async (req, res) => {
     edad_seBusca,
     raza_seBusca,
     caracteristica_seBusca,
+    telefono_seBusca,
+    recompensa_seBusca,
     tipo_seBusca,
     foto_seBusca: result.url,
     user_id: req.user.id,
@@ -105,7 +109,7 @@ router.get("/", isLoggedIn, async (req, res) => {
 router.get("/delete/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   await pool.query("DELETE FROM busquedas WHERE id = ?", [id]);
-  req.flash("success", "Publicacíon Eliminada de Mascota Extraviada");
+  req.flash("success", "Eliminada Publicacíon de Mascota ");
   res.redirect("/busca");
 });
 

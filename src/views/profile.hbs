@@ -69,7 +69,10 @@
                 <div class="card shadow p-3 mb-5 bg-white rounded" style="border: none;">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="/img/dog-profile.jpg" alt="Admin" class="rounded-circle" width="150">
+                            <a href="/upload/edit/{{user.id}}" style="color: grey;"><i class="fas fa-pen"></i>
+                                Editar
+                                Foto</a>
+                            <img src="{{user.foto_usuario}}" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4>{{user.nombre}}</h4>
                                 <p class="text-secondary mb-1">{{user.tipo_usuario}}</p>

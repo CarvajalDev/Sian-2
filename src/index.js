@@ -69,6 +69,8 @@ app.use(
     { name: "evidencia_formato" },
     { name: "carta_mascota_peligrosa" },
     { name: "vacunacion_mascota" },
+    { name: "foto_usuario" },
+    
   ])
 );
 
@@ -86,6 +88,7 @@ app.use("/mascotas", require("./routes/mascotas"));
 app.use("/reportes", require("./routes/reportes"));
 app.use("/busca", require("./routes/seBusca"));
 app.use("/reset", require("./routes/reset"));
+app.use("/upload", require("./routes/upload"));
 
 //public
 app.use(express.static(path.join(__dirname, "public")));
